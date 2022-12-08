@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- なるべくファイルを増やさずに楽したい -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>閏年判別</title>
+    <style>
+        body {
+            background: url(img/index.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: right 10% bottom 68%;
+        }
+        .h {
+            color: azure;
+        }
+        h1 {
+            font-size: 150px;
+            margin-bottom: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1 id="date" class="h"></h1>
+        <p id="p" class="h" style="font-size: 30px;"></p>
+    </center>
+<script>
+    const year = new Date().getFullYear()
+    const p = document.getElementById("p")
+    p.textContent = "今年はうるう年ではありません。"
+    if (year%100 !==0 ){
+        if (year%400 == 0 || year%4 == 0){
+            p.textContent = "今年はうるう年です。"
+        }
+    }
+    document.getElementById("date").textContent = year + "年"
+</script>
+</body>
+</html>
