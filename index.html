@@ -21,23 +21,33 @@
             margin-bottom: 0;
             padding: 0;
         }
+        input {
+            height: 40px;
+            width: 200px;
+            font-size: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <center>
         <h1 id="date" class="h"></h1>
         <p id="p" class="h" style="font-size: 30px;"></p>
+        <input type="text" id="text" placeholder="西暦を入力" onchange="leap()">
     </center>
 <script>
-    const year = new Date().getFullYear()
     const p = document.getElementById("p")
-    p.textContent = "今年はうるう年ではありません。"
-    if (year%100 !==0 ){
-        if (year%400 == 0 || year%4 == 0){
-            p.textContent = "今年はうるう年です。"
+    const leap = ()=>{
+        const text = document.getElementById("text").value
+        y = text
+        if (!text || isNaN(text)) y = new Date().getFullYear()
+        p.textContent = y + "年はうるう年ではありません。"
+        if (y%100 !==0 || y%400 == 0){
+            if (y%4 == 0) p.textContent = y + "年はうるう年です。"
         }
+        document.getElementById("date").textContent = y + "年"
     }
-    document.getElementById("date").textContent = year + "年"
+    leap()
 </script>
 </body>
 </html>
